@@ -294,6 +294,7 @@ Primer div que contiene los divs de datos basicos*/
 	width:95%;
 	height:50px; /*temporal*/
 	padding:12px 5px; /*temporal*/
+  margin: 1px 1px 1px 55px;
 }
 .preguntas{
 	font: 13px 'Lucida Grande', Tahoma, Verdana, sans-serif;
