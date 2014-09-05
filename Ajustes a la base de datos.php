@@ -43,3 +43,8 @@ ALTER TABLE  `usuarios` ADD  `USU_PERFIL` INTEGER NOT NULL
 // --------------------------------------
 
 ALTER TABLE  `usuarios` ADD  `VALIDA_CONTRASENA` varchar(50) NOT NULL      
+
+//---------------------------------------
+dejar el campo fecha de guia estu y gia doc como varchar
+
+cambiar campo contraseña y valida_contraseña de usuarios a 100 caracteres
