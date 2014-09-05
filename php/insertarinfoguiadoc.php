@@ -23,6 +23,7 @@
 	$V_PREG_6		 = $_POST['PREG_6'];
 	$V_PREG_7		 = $_POST['PREG_7'];
 	$V_UTC			 = date("U");
+	$V_FEC		     = date("Y-m-d H:i:s");
 	//CONSULTA
 	$consultausuario = mysql_query("SELECT ID FROM USUARIOS WHERE USUARIO='".$USUARIO."' LIMIT 1");
 	$resultado 		 =  mysql_fetch_array($consultausuario);
@@ -35,9 +36,9 @@
 		$consulta = mysql_query("INSERT INTO GUIA_DOC (ID_USUARIO, NOM_INST, NOM_DIRECTIVO, CARGO, DIRECCION, TEL, 
 											EMAIL, PREG_1, PREG_2, PREG_3, PREG_4, PREG_5, PREG_6, PREG_7, 
 											utc, FECHA, MUNICIPIO, ESTADO) 
-									  VALUES ('$V_ID_USUARIO', '$V_NOM_INST', '$V_NOM_DIRECTIVO','$V_CARGO','$V_DIRECCION','$V_TEL',
-									  	    '$V_EMAIL','$V_PREG_1','$V_PREG_2','$V_PREG_3','$V_PREG_4','$V_PREG_5','$V_PREG_6','$V_PREG_7',
-									  	    '$V_UTC','".date("Y-m-d H:i:s")."','$V_MUNICIPIO','S')
+									  VALUES (".$V_ID_USUARIO.", '".$V_NOM_INST."', '".$V_NOM_DIRECTIVO."','".$V_CARGO."','".$V_DIRECCION."','".$V_TEL."',
+									  	    '".$V_EMAIL."','".$V_PREG_1."','".$V_PREG_2."','".$V_PREG_3."','".$V_PREG_4."','".$V_PREG_5."','".$V_PREG_6."','".$V_PREG_7."',
+									  	    '".$V_UTC."','".$V_FEC."','".$V_MUNICIPIO."','S')
 									");
 	}else{
 		$consulta = mysql_query("UPDATE GUIA_DOC
@@ -54,7 +55,7 @@
 									    PREG_5        ='".$V_PREG_5."',
 									    PREG_6        ='".$V_PREG_6."',
 									    PREG_7        ='".$V_PREG_7."',
-									    FECHA         ='".date("Y-m-d H:i:s")."', 
+									    FECHA         ='".$V_FEC."', 
 										MUNICIPIO     ='".$V_MUNICIPIO."'
 								  WHERE CODIGO        =".$CODIGO."
 								;");

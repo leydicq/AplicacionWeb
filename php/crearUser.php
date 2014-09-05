@@ -23,9 +23,9 @@ include("conexion.php");
             var v_rol  = $("#rol").val();
             var v_con  = $("#v_contrasena").val();
             var v_vco  = $("#conf_contrasena").val();
-            var v_con1 = hex_md5(v_con);
-            var v_vco1 = hex_md5(v_vco);
-            $("#tablaMain").load("php/insertarUser.php?v_cod="+v_cod+"&v_usu="+v_usu+"&v_nom="+v_nom+"&v_ape="+v_ape+"&v_ema="+v_ema+"&v_rol="+v_rol+"&v_con="+v_con1+"&v_vco="+v_vco1);
+            // var v_con1 = hex_md5(v_con);
+            // var v_vco1 = hex_md5(v_vco);
+            $("#tablaMain").load("php/insertarUser.php?v_cod="+v_cod+"&v_usu="+v_usu+"&v_nom="+v_nom+"&v_ape="+v_ape+"&v_ema="+v_ema+"&v_rol="+v_rol+"&v_con="+v_con+"&v_vco="+v_vco);
         };
 
         function verificaDatos(){
@@ -89,11 +89,11 @@ include("conexion.php");
         <label for="apellido">Apellido:</label><br />                
         <input id="apellido" name="APELLIDO" type="text" placeholder="" ><br />
         <label for="email">Correo Electr&oacute;nico:</label><br />
-        <input id="email" name="EMAIL" type="text" placeholder="" ><br />
+        <input id="email" name="EMAIL" type="email" placeholder="" ><br />
         <label for="rol">Tipo de Rol:</label><br />
         <select id="rol" name="ROL">
-            <option values="ADMINISTRADOR">Administrador</option>
-            <option values="CONSULTA" selected>Consulta</option>';          
+            <option values="ADMINISTRADOR" selected>Administrador</option>
+            <option values="CONSULTA">Consulta</option>';          
         </select><br />
         <label for="v_contrasena">Contrase&ntilde;a:</label><br />
         <input id="v_contrasena" name="V_CONTRASENA" type="password" placeholder="" value="" ><br />

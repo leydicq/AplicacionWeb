@@ -6,7 +6,7 @@
     $CODIGO 	= $_POST['CODIGO'];  
     //
 	$USUARIO 	= $_SESSION['USUARIO'];
-	$CONTRASENA = $_SESSION['CONTRASENA'];
+	// $CONTRASENA = $_SESSION['CONTRASENA'];
 	//
 	$V_NOM_INST  = strtoupper($_POST['NOM_INST']);
 	$V_CARACTER  = $_POST['CARACTER'];
@@ -28,8 +28,9 @@
 	$V_PREG_11   = $_POST['PREG_11'];
 	$V_PREG_12   = $_POST['PREG_12'];
 	$V_UTC       = date("U");
-	//$V_FECHA     = date("Y-m-d");
+	$V_FEC		 = date("Y-m-d H:i:s");
 
+	//
 	//CONSULTA
 	$consultausuario = mysql_query("SELECT ID FROM USUARIOS WHERE USUARIO='".$USUARIO."' LIMIT 1");
 	$resultado =  mysql_fetch_array($consultausuario);
@@ -43,9 +44,9 @@
 										utc, FECHA, MUNICIPIO, ESTADO) 
 	                              VALUES (".$V_ID_USUARIO.", '".$V_NOM_INST."', '".$V_CARACTER."','".$V_DIRECCION."','".$V_TEL."','".$V_EMAIL."','".$V_REP_LEGAL."',
 	                              	   '".$V_PREG_1."','".$V_PREG_2."','".$V_PREG_3."','".$V_PREG_4."','".$V_PREG_5."','".$V_PREG_6."','".$V_PREG_7."','".$V_PREG_8."','".$V_PREG_9."','".$V_PREG_10."','".$V_PREG_11."','".$V_PREG_12."',
-	                              	   '".$V_UTC."','".date("Y-m-d H:i:s")."','".$V_MUNICIPIO."','S')
+	                              	   '".$V_UTC."','".$V_FEC."','".$V_MUNICIPIO."','S')
 	"); 
-	echo "  despues de insetar";
+	echo "  despues de insetar fecha=".date("Y-m-d")." varaible= ".$V_FEC;
 	}else{
 		$consulta = mysql_query("UPDATE GUIA_EST
 								    SET NOM_INST      ='".$V_NOM_INST."',
@@ -66,12 +67,12 @@
 									    PREG_10       ='".$V_PREG_10."',
 									    PREG_11       ='".$V_PREG_11."',
 									    PREG_12       ='".$V_PREG_12."',
-									    FECHA         ='".date("Y-m-d H:i:s")."', 
+									    FECHA         ='".$V_FEC."', 
 										MUNICIPIO     ='".$V_MUNICIPIO."'
 								  WHERE CODIGO        =".$CODIGO."
 								;");
 	}
 	//CERRAR CONEXION
 	mysql_close($conexion);
-	header('Location: ../main.php');
+	// header('Location: ../main.php');
 ?>

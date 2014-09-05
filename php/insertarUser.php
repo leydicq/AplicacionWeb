@@ -9,9 +9,8 @@
 	$V_APELLIDO			  = strtoupper($_GET['v_ape']);
 	$V_EMAIL			  = strtoupper($_GET['v_ema']);
 	$V_ROL 				  = strtoupper($_GET['v_rol']);
-	$V_CONTRASENA		  = $_GET['v_con'];
-    $V_VALIDA_CONTRASENA  = $_GET['v_vco'];
-    //
+	$V_CONTRASENA		  = md5($_GET['v_con']); //'v_con'];
+    $V_VALIDA_CONTRASENA  = md5($_GET['v_vco']); //$_GET['v_vco'];
     //
 	$consulta   = "SELECT ID FROM USUARIOS WHERE USUARIO= '".$V_NOM_USUARIO."' AND ESTADO = 'S'";
 	$resultado  = mysql_query($consulta);

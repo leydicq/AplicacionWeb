@@ -31,10 +31,10 @@
 			<div class="Datos_encuesta">
 			<label for="municipio">Municipio:</label>
 			<select id="municipio" name="MUNICIPIO">
-				<option values="Acacias">Acacias</option>
+				<option values="Acacias" selected>Acacias</option>
 				<option values="Cumaral">Cumaral</option>
 				<option values="Granada">Granada</option>
-				<option values="Villavicencio" selected>Villavicencio</option>
+				<option values="Villavicencio">Villavicencio</option>
 			</select>
 			</div>
 

@@ -1,9 +1,10 @@
 <?php
 	//OBTENER VARIABLE
 	$USER = strtoupper ($_POST['USUARIO']);
-	// $PASS = hash('sha256',$_POST['CONTRASENA']);
-	$PASS = $_POST['CONTRASENA'];  // calve temporal.....CAMBIARRRRRRRRRRRRRRRRRRRRR
+	$PASS = md5($_POST['CONTRASENA']);
+	// $PASS = $_POST['CONTRASENA'];  // calve temporal.....CAMBIARRRRRRRRRRRRRRRRRRRRR
 	//
+	echo "pass= ".$PASS;
 	$CONEXION   = mysql_connect('localhost','user','123');
 	if(!$CONEXION){
 		die ('Ha sido imposible establecer Conexion a la BD '.mysql_error());

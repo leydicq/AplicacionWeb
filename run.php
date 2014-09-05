@@ -1,6 +1,5 @@
 <?php
 	$ux = $_GET['ux'];
-	
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -13,8 +12,6 @@
 	<title>Inicio Sesion</title>
 	<link rel="stylesheet" href="css/formstyle.css">
 	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="lib/crypt/md5/2.2/md5-min.js"></script>
-	<script type='text/javascript' src='lib/crypt/md5/2.2/md5-min.js'></script>
 	<!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body>
