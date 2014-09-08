@@ -30,9 +30,13 @@
     <body>
         <div class="encabezadoFijo">
             <div class="Volver"><a href="#"><img id="imgVolver" src="img/volver1.png" alt="Volver" title="Volver"></a></div>
+            <?php if($_SESSION['PERFIL'] == 1){ ?>
             <a class="navButton"  id="borrar" href="#"><img src="img/eliminar.png" alt="Eliminar" title="Eliminar"></a>
+            <?php } ?>
             <a class="navButton"  id="descargar" href="php/descargarArchivo.php?CODIGO=<?php echo $CODIGO ?>&TABLA=<?php echo $TABLA ?>"><img src="img/descargar.png" alt="Descargar" title="Descargar"></a>
+            <?php if($_SESSION['PERFIL'] == 1){ ?>
             <a class="navButton"  id="editar" href="#"><img src="img/editar_mini.png" alt="Editar" title="Editar"></a>
+            <?php } ?>
             <h2 class="tituloDep">Detalle</h2>
         </div>
         <?php
