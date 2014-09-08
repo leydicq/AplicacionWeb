@@ -1,6 +1,6 @@
 <?php
 	//CONEXION
-	$conexion = mysql_connect('localhost','user','123');
+	$conexion = mysql_connect('localhost','admin','developer1');
 	if(!$conexion){
 		die ('Ha sido imposible establecer Conexion a la BD'.mysql_error());
 	}
