@@ -9,11 +9,11 @@
 	//
 	//CREAR BASE DE DATOS
 	//
-	mysql_query("CREATE DATABASE IF NOT EXISTS prueba2 DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci",$conexion);
+	mysql_query("CREATE DATABASE IF NOT EXISTS prueba3 DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci",$conexion);
 	//
 	//SELECCIONAR BASE DE DATOS
 	//
-	mysql_select_db('prueba2',$conexion);
+	mysql_select_db('prueba3',$conexion);
 	//
 	//CREAR TABLA guia_doc 
 	//
@@ -34,9 +34,9 @@
 	  PREG_6 text,
 	  PREG_7 text,
 	  utc int(11) DEFAULT NULL,
-	  FECHA datetime DEFAULT NULL,
+	  FECHA varchar(20) NOT NULL,
 	  MUNICIPIO varchar(50) NOT NULL,
-	  ESTADO varchar(20) DEFAULT 'A',
+	  ESTADO varchar(1) DEFAULT 'A',
 	  PRIMARY KEY (CODIGO),
 	  UNIQUE KEY CODIGO (CODIGO),
 	  KEY FORANEA1_ENTRE_GUIA_DOCYUSUARIOS_FK (ID_USUARIO)
@@ -126,5 +126,12 @@
 	  UNIQUE KEY ID (ID),
 	  KEY FORANEA1_ENTRE_PERFILESYUSUARIOS_FK (USU_PERFIL)
 	) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=0";
+	//
+	//
+	$resultado  = mysql_query($consulta);
+	if(!$resultado){
+		die ('Error = '.mysql_error());
+	}
+	//
 echo "Proceso Terminado con Exito!";
 ?>
