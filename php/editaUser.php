@@ -11,25 +11,24 @@
     <script type="text/javascript">
         function cancelar(){
              $("#tablaMain").load("php/adminUsuarios.php");
-        }
-        function valUser(){
-            var v_cod = $("#v_codigo").val();
-            var v_usu = $("#v_usuario").val();
-            var v_nom = $("#nombre").val();
-            var v_ape = $("#apellido").val();
-            var v_ema = $("#email").val();
-            var v_rol = $("#rol").val();
-            var v_con = $("#v_contrasena").val();
-            var v_vco = $("#conf_contrasena").val();
-            $("#tablaMain").load("php/insertarUser.php?v_cod="+v_cod+"&v_usu="+v_usu+"&v_nom="+v_nom+"&v_ape="+v_ape+"&v_ema="+v_ema+"&v_rol="+v_rol+"&v_con="+v_con+"&v_vco="+v_vco);
         };
-
+        //
+        function valUser(v_cod,v_usu,v_nom,v_ape,v_ema,v_rol,v_con,v_vco){
+            v_nom= v_nom.replace(/\s/g,"%20");
+            v_ape= v_ape.replace(/\s/g,"%20");
+            alert("llego a valUser");
+            $("#tablaMain").load("php/insertarUser.php?v_cod="+v_cod+"&v_usu="+v_usu+"&v_nom="+v_nom+"&v_ape="+v_ape+"&v_ema="+v_ema+"&v_rol="+v_rol+"&v_con="+v_con+"&v_vco="+v_vco);
+        }; 
+        //
         function verificaDatos(){
+            alert("llego a verificaDatos");
+            var v_codigo               = $("#v_codigo").val();
             var v_usuario              = $("#v_usuario").val();
             var nombre                 = $("#nombre").val();
             var apellido               = $("#apellido").val();
             var email                  = $("#email").val();
-            var validacion_email       = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
+            var validacion_email       = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/; 
+            var rol                    = $("#rol").val();
             var v_contrasena           = $("#v_contrasena").val();
             var conf_contrasena        = $("#conf_contrasena").val();
             //
@@ -63,33 +62,19 @@
                 $("#conf_contrasena").focus();
                 return false;
             }
-            // -------------------- PENDIENTE EL HASH ------------------------
-            //
-            // else if(v_contrasena != ""){
-            //     contrasena_hash = hash('sha256',v_contrasena);
-            //     return false;
-            // }
-            // else if(conf_contrasena != ""){
-            //     v_contrasena_hash = hash('sha256',conf_contrasena);
-            //     return false;
-            // }
-            // else if(contrasena_hash != v_contrasena_hash){
-            //
-            // -------------------- PENDIENTE EL HASH ------------------------
             else if(v_contrasena != conf_contrasena){
                 alert("¡La contraseñas ingresadas al sistema son distintas!");
                 $("#v_contrasena").focus();
                 return false;
             }
             else{
-                alert("else");
-                valUser();
+                valUser(v_codigo,v_usuario,nombre,apellido,email,rol,v_contrasena,conf_contrasena);
             }
         };
     </script>
 </head>
 <body>
-	<h2 class="tituloDep">Modificar Usuarios</h2>
+	
 	
 	<?php
 	$consulta = mysql_query("SELECT ID, USUARIO, NOMBRE, APELLIDO, PERFIL, DES_PERFIL, EMAIL
@@ -109,10 +94,10 @@
 			<option values="CONSULTA" selected>Cunsulta</option>';
         }
 	?>
+    <h2 class="tituloDep">Modificar Usuario <?php echo $resultado['USUARIO'] ?> </h2>
 	<form id="infoUser" action="#" method="POST"> 
         <input id="v_codigo" type="hidden" name="CODIGO" value="<?php echo $resultado['ID'] ?>" >
-        <label for="v_usuario">Nombre de Usuario:</label><br />
-        <input id="v_usuario" name="USUARIO"    type="text" placeholder="" value="<?php echo $resultado['USUARIO'] ?>" ><br />
+        <input id="v_usuario" type="hidden" name="USUARIO"    type="text" placeholder="" value="<?php echo $resultado['USUARIO'] ?>" ><br />
         <label for="nombre">Nombre:</label><br />
         <input id="nombre"  name="NOMBRE"     type="text" placeholder="" value="<?php echo $resultado['NOMBRE'] ?>" ><br />
         <label for="apellido">Apellido:</label><br />

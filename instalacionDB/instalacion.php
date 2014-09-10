@@ -9,23 +9,23 @@
 	//
 	//CREAR BASE DE DATOS
 	//
-	mysql_query("CREATE DATABASE IF NOT EXISTS prueba3 DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci",$conexion);
+	mysql_query("CREATE DATABASE IF NOT EXISTS bd_investigacion DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci",$conexion);
 	//
 	//SELECCIONAR BASE DE DATOS
 	//
-	mysql_select_db('prueba3',$conexion);
+	mysql_select_db('bd_investigacion',$conexion);
 	//
 	//CREAR TABLA guia_doc 
 	//
 	$consulta = "CREATE TABLE IF NOT EXISTS guia_doc (
 	  CODIGO int(11) NOT NULL AUTO_INCREMENT,
 	  ID_USUARIO int(11) NOT NULL,
-	  NOM_INST varchar(50) NOT NULL,
-	  NOM_DIRECTIVO varchar(50) NOT NULL,
-	  CARGO varchar(50) DEFAULT NULL,
-	  DIRECCION varchar(50) DEFAULT NULL,
-	  TEL varchar(50) DEFAULT NULL,
-	  EMAIL varchar(50) DEFAULT NULL,
+	  NOM_INST varchar(200) NOT NULL,
+	  NOM_DIRECTIVO varchar(200) NOT NULL,
+	  CARGO varchar(100) DEFAULT NULL,
+	  DIRECCION varchar(100) DEFAULT NULL,
+	  TEL varchar(100) DEFAULT NULL,
+	  EMAIL varchar(200) DEFAULT NULL,
 	  PREG_1 text,
 	  PREG_2 text,
 	  PREG_3 text,
@@ -53,12 +53,12 @@
 	$consulta = "CREATE TABLE IF NOT EXISTS guia_est (
 	  CODIGO int(11) NOT NULL AUTO_INCREMENT,
 	  ID_USUARIO int(11) NOT NULL,
-	  NOM_INST varchar(50) NOT NULL,
+	  NOM_INST varchar(200) NOT NULL,
 	  CARACTER varchar(50) DEFAULT NULL,
-	  DIRECCION varchar(50) DEFAULT NULL,
-	  TEL varchar(50) DEFAULT NULL,
-	  EMAIL varchar(50) DEFAULT NULL,
-	  REP_LEGAL varchar(50) DEFAULT NULL,
+	  DIRECCION varchar(100) DEFAULT NULL,
+	  TEL varchar(100) DEFAULT NULL,
+	  EMAIL varchar(200) DEFAULT NULL,
+	  REP_LEGAL varchar(200) DEFAULT NULL,
 	  PREG_1 text,
 	  PREG_2 text,
 	  PREG_3 text,
@@ -129,6 +129,17 @@
 	//
 	//
 	$resultado  = mysql_query($consulta);
+	if(!$resultado){
+		die ('Error = '.mysql_error());
+	}
+	//
+	//
+	$consulta = "INSERT INTO usuarios (NOMBRE, APELLIDO, USUARIO, CONTRASENA, EMAIL, ESTADO, USU_PERFIL, VALIDA_CONTRASENA) 
+	VALUES ('DESARROLLADOR1', 'DESARROLLADOR1', 'DESARROLLADOR1', '202cb962ac59075b964b07152d234b70', 'LEYDI.CAMARGO@GMAIL.COM', 'S', 1, '202cb962ac59075b964b07152d234b70')";
+	//
+	//
+	$resultado  = mysql_query($consulta);
+	//
 	if(!$resultado){
 		die ('Error = '.mysql_error());
 	}

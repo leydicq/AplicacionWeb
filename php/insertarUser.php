@@ -6,13 +6,15 @@
 	$CODIGO				  = $_GET['v_cod'];
 	$V_NOM_USUARIO		  = strtoupper($_GET['v_usu']);
 	$V_NOMBRE			  = strtoupper($_GET['v_nom']);
+	$V_NOMBRE             = str_replace("%20"," ",$V_NOMBRE);
 	$V_APELLIDO			  = strtoupper($_GET['v_ape']);
+	$V_APELLIDO           = str_replace("%20"," ",$V_APELLIDO);
 	$V_EMAIL			  = strtoupper($_GET['v_ema']);
 	$V_ROL 				  = strtoupper($_GET['v_rol']);
-	$V_CONTRASENA		  = md5($_GET['v_con']); //'v_con'];
-    $V_VALIDA_CONTRASENA  = md5($_GET['v_vco']); //$_GET['v_vco'];
+	$V_CONTRASENA		  = md5(strtoupper ($_GET['v_con']));
+    $V_VALIDA_CONTRASENA  = md5(strtoupper ($_GET['v_vco']));
     //
-	$consulta   = "SELECT ID FROM USUARIOS WHERE USUARIO= '".$V_NOM_USUARIO."' AND ESTADO = 'S'";
+    $consulta   = "SELECT ID FROM USUARIOS WHERE USUARIO= '".$V_NOM_USUARIO."' AND ESTADO = 'S'";
 	$resultado  = mysql_query($consulta);
 	//
 	if (mysql_num_rows($resultado) <= 0){ 
@@ -21,7 +23,6 @@
 	else{
 		$existeux = true;
 	}
-
 	if($existeux){
 		if($CODIGO == 0){
 			echo "<h1>El Nombre de Usuario que esta ingresando, Ya existe!</h1>";
@@ -36,13 +37,13 @@
 			$consulta = mysql_query("UPDATE USUARIOS
 									    SET NOMBRE        		='".$V_NOMBRE."',
 									    	APELLIDO      		='".$V_APELLIDO."',
-									    	USUARIO       		='".$V_NOM_USUARIO."',
 									    	CONTRASENA    		='".$V_CONTRASENA."',
-									    	V_VALIDA_CONTRASENA = '".$V_VALIDA_CONTRASENA."',
+									    	VALIDA_CONTRASENA   = '".$V_VALIDA_CONTRASENA."',
 									    	EMAIL         		='".$V_EMAIL."',
 									    	USU_PERFIL          =".$V_ROL."
-									  WHERE CODIGO        		=".$CODIGO."
+									  WHERE ID        		    =".$CODIGO."
 									;");
+			echo "<h1>Usuario Actualizado con Éxito!</h1>";
 		}
 	}
 	else{

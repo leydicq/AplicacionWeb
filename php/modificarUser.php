@@ -34,7 +34,8 @@
 	<?php
 	$consulta = mysql_query("SELECT ID, USUARIO, CONCAT(NOMBRE,' ',APELLIDO), DES_PERFIL
 							   FROM USUARIOS, PERFILES
-							  WHERE USU_PERFIL = PERFIL;
+							  WHERE USU_PERFIL = PERFIL
+							    AND ESTADO = 'S';
 							");
 	//IMPRIMIR CONSULTA
 	$resultado = mysql_fetch_array($consulta);

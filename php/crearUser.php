@@ -13,27 +13,22 @@ include("conexion.php");
     <script type="text/javascript">
         function cancelar(){
              $("#tablaMain").load("php/adminUsuarios.php");
-        }
-        function valUser(){
-            var v_cod  = $("#v_codigo").val();
-            var v_usu  = $("#v_usuario").val();
-            var v_nom  = $("#nombre").val();
-            var v_ape  = $("#apellido").val();
-            var v_ema  = $("#email").val();
-            var v_rol  = $("#rol").val();
-            var v_con  = $("#v_contrasena").val();
-            var v_vco  = $("#conf_contrasena").val();
-            // var v_con1 = hex_md5(v_con);
-            // var v_vco1 = hex_md5(v_vco);
-            $("#tablaMain").load("php/insertarUser.php?v_cod="+v_cod+"&v_usu="+v_usu+"&v_nom="+v_nom+"&v_ape="+v_ape+"&v_ema="+v_ema+"&v_rol="+v_rol+"&v_con="+v_con+"&v_vco="+v_vco);
         };
-
+        //
+        function valUser(v_cod,v_usu,v_nom,v_ape,v_ema,v_rol,v_con,v_vco){
+            v_nom= v_nom.replace(/\s/g,"%20");
+            v_ape= v_ape.replace(/\s/g,"%20");
+            $("#tablaMain").load("php/insertarUser.php?v_cod="+v_cod+"&v_usu="+v_usu+"&v_nom="+v_nom+"&v_ape="+v_ape+"&v_ema="+v_ema+"&v_rol="+v_rol+"&v_con="+v_con+"&v_vco="+v_vco);
+        };  
+        //
         function verificaDatos(){
+            var v_codigo               = $("#v_codigo").val();
             var v_usuario              = $("#v_usuario").val();
             var nombre                 = $("#nombre").val();
             var apellido               = $("#apellido").val();
             var email                  = $("#email").val();
             var validacion_email       = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/; 
+            var rol                    = $("#rol").val();
             var v_contrasena           = $("#v_contrasena").val();
             var conf_contrasena        = $("#conf_contrasena").val();
             //
@@ -73,7 +68,7 @@ include("conexion.php");
                 return false;
             }
             else{
-                valUser();
+                valUser(v_codigo,v_usuario,nombre,apellido,email,rol,v_contrasena,conf_contrasena);
             }
         };
     </script>
