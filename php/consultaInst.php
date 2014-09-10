@@ -32,7 +32,7 @@
 	</script>
 </head>
 <body>
-	<h2 class="tituloDep">Ordenado por Institución</h2>
+	<h2 class="tituloDep">Ordenado por Nombre de la Institución</h2>
 	<div class="resultado-cabezera">
         <div class="divCodigo">Código</div>
         <div class="divnombre">Nombre de la institución</div>
